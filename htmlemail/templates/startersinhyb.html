@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Single Column Hybrid</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <style type="text/css">
+        /* CLIENT-SPECIFIC STYLES */
+        body,
+        table,
+        td,
+        a {
+            -webkit-text-size-adjust: 100%;
+            -ms-text-size-adjust: 100%;
+        }
+
+        table,
+        td {
+            mso-table-lspace: 0pt;
+            mso-table-rspace: 0pt;
+        }
+
+        img {
+            -ms-interpolation-mode: bicubic;
+        }
+
+        /* RESET STYLES */
+        img {
+            border: 0;
+            height: auto;
+            line-height: 100%;
+            outline: none;
+            text-decoration: none;
+        }
+
+        table {
+            border-collapse: collapse !important;
+        }
+
+        body {
+            height: 100% !important;
+            margin: 0 !important;
+            padding: 0 !important;
+            width: 100% !important;
+        }
+
+        /* iOS BLUE LINKS */
+        a[x-apple-data-detectors] {
+            color: inherit !important;
+            text-decoration: none !important;
+            font-size: inherit !important;
+            font-family: inherit !important;
+            font-weight: inherit !important;
+            line-height: inherit !important;
+        }
+
+        /* GMAIL BLUE LINKS */
+        u+#body a {
+            color: inherit;
+            text-decoration: none;
+            font-size: inherit;
+            font-family: inherit;
+            font-weight: inherit;
+            line-height: inherit;
+        }
+
+        /* SAMSUNG MAIL BLUE LINKS */
+        #MessageViewBody a {
+            color: inherit;
+            text-decoration: none;
+            font-size: inherit;
+            font-family: inherit;
+            font-weight: inherit;
+            line-height: inherit;
+        }
+
+        /* Universal styles for links and stuff */
+        a {
+            color: #229efd;
+            font-weight: bold;
+        }
+
+        a:hover {
+            color: #fd6350;
+            text-decoration: none;
+        }
+
+        a.button:hover {
+            background-color: #fd6350 !important;
+
+        }
+
+        /* Interactive elements */
+        /* Hide inputs */
+        input {
+            display: none;
+        }
+
+        /* Make labes look clickable */
+        label {
+            cursor: pointer;
+        }
+
+        /* Hide slides */
+        .slide {
+            display: none;
+        }
+
+        /* Show the checked slides */
+        #slide1:checked~.slide1,
+        #slide2:checked~.slide2,
+        #slide3:checked~.slide3 {
+            display: block;
+        }
+
+        /* Responsive styles */
+        @media screen and (max-width: 600px) {
+            h1 {
+                font-size: 24px !important;
+            }
+        }
+    </style>
+</head>
+
+<body id="body" style="margin: 0 !important; padding: 0 !important;">
+
+    <!-- Preview text for the inbox -->
+    <div style="display: none; max-height: 0; overflow: hidden;">
+        This will be displayed underneath the subject line. Use it wisely.
+    </div>
+
+    <!--[if (gte mso 9)|(IE)]>
+		<table cellspacing="0" cellpadding="0" border="0" width="600" align="center" role="presentation"><tr><td>
+		<![endif]-->
+
+    <div
+        style="background-color: white; color: #000000; font-family: sans-serif; font-size: 18px; line-height: 36px; margin: 0 auto; max-width: 600px; padding: 40px 20px 40px 20px;">
+
+
+        <!-- Triggers for swithing content -->
+        <input type="radio" name="slikes" id="slide1" checked>
+        <input type="radio" name="slikes" id="slide2">
+        <input type="radio" name="slikes" id="slide3">
+
+        <label for="slide1" class="slide-label" style="border: 2px solid black;
+        display: inline-block; margin: 10px; padding: 4px 20px">Slide 1</label>
+        <label for="slide2" class="slide-label" style="border: 2px solid black;
+        display: inline-block; margin: 10px; padding: 4px 20px">Slide 2</label>
+        <label for="slide3" class="slide-label" style="border: 2px solid black;
+        display: inline-block; margin: 10px; padding: 4px 20px">Slide 3</label>
+
+        <div class="slide slide1" style="background-color: red; padding: 20px">
+            <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Blanditiis alias, praesentium placeat
+                perspiciatis a nulla? Earum, illo quas nobis nihil deserunt aperiam sunt mollitia illum natus saepe
+                aspernatur odio. Sint.</p>
+        </div>
+        <div class="slide slide2" style="background-color: blue; padding: 20px">
+            <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Blanditiis alias, praesentium placeat
+                perspiciatis a nulla? Earum, illo quas nobis nihil deserunt aperiam sunt mollitia illum natus saepe
+                aspernatur odio. Sint.</p>
+        </div>
+        <div class="slide slide3" style="background-color: gold; padding: 20px">
+            <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Blanditiis alias, praesentium placeat
+                perspiciatis a nulla? Earum, illo quas nobis nihil deserunt aperiam sunt mollitia illum natus saepe
+                aspernatur odio. Sint.</p>
+        </div>
+
+        <!-- Content to be switched -->
+
+
+
+    </div>
+    <!--[if (gte mso 9)|(IE)]>
+		</td></tr></table>
+		<![endif]-->
+
+</body>
+
+</html>
