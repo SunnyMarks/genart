@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-    <title></title>
+    <title>PYROSYNTHESIS</title>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta name="viewport" content="width=device-width initial-scale=1" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -80,6 +80,11 @@
         /* Universal styles for links and stuff */
 
         /* Responsive styles */
+        @media screen and (max-width: 600px) {
+            h1 {
+                font-size: 24px !important;
+            }
+        }
     </style>
 </head>
 
@@ -89,52 +94,249 @@
         This will be displayed underneath the subject line. Use it wisely.
     </div>
 
-    <table border="0" cellpadding="0" width="100%">
+
+    <!-- non-breaking space and zero-width non-joiner. Ensures preview text is hidden in email.-->
+    <div style="display: none; max-height: 0px; overflow: hidden;">
+        &nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;
+    </div>
+
+    <table border="0" cellpadding="0" width="100%" role="presentation">
         <tr>
             <td>
-                <table border="0" cellpadding="0" width="600">
+                <table border="0" cellpadding="0" width="600" align="center" role="presentation">
                     <!-- Logo -->
                     <tr>
-                        <td align="center" style="padding: 20px;">
-                            <img src="#" alt="description" width="40" border="0"
+                        <td align="center" style="border-radius: 2px;padding: 20px; background-color: #f87060">
+                            <!--<img src="#" alt="description" width="40" border="0"
                                 style="border-radius: 40px; display: block; margin: 0 auto;">
+                            -->
+                            <h1 style="margin: 0; font-size: 40px;color: #fdf2f2;">PYROSYNTHESIS</h1>
                         </td>
                     </tr>
 
                     <!-- Headline -->
                     <tr>
-                        <td style="padding: 20px;">
-                            <h1 style="margin: 0; font-size: 32px; 
-                            text-align: center;">Who loves Pyro?</h1>
+                        <td style="padding: 10px;">
+                            <h1 style="margin: 40px 0 70px 0; font-size: 36px; 
+                            font-weight: bold; line-height: 36px; ">The Pyrotechnic Newsletter</h1>
+                            <span style="margin: 0 0 0 10px; color: #ff2e66; font-size: 18px; font-weight: normal;">by
+                                Pyrosynthesis</span>
                         </td>
                     </tr>
 
-                    <!-- Hero Image -->
+                    <!-- Hero Image | Break Banner -->
                     <tr>
-                        <td style="padding: 20px;">
-                            <img src="#" alt="description" width="600" border="0" style="border-radius: 4px;
+                        <td style="padding: 10px;">
+                            <!-- Maybe add an animated gif here -->
+                            <!--
+                                <img src="#" alt="description" width="600" border="0" style="border-radius: 4px;
                              display: block; max-width: 100%; min-width:100px; width: 100%;">
+                            -->
                         </td>
                     </tr>
 
                     <!-- Body copy -->
                     <tr>
-                        <td style="padding: 20px;">
-                            <p style="margin: 0 0 20px 0;">Lorem ipsum dolor sit amet,
-                                consectetur adipisicing elit. Nam ducimus iusto quam
-                                veniam ab dolorem odit dolores quia, doloremque asperiores
-                                eaque reprehenderit tempora repellat saepe sint, cum
-                                cumque autem excepturi.</p>
-                            <p style="margin: 0 0 20px 0;">Lorem ipsum dolor sit amet,
-                                consectetur adipisicing elit. Nam ducimus iusto quam
-                                veniam ab dolorem odit dolores quia, doloremque asperiores
-                                eaque reprehenderit tempora repellat saepe sint, cum
-                                cumque autem excepturi.</p>
-                            <p style="margin: 0 0 20px 0;">Lorem ipsum dolor sit amet,
-                                consectetur adipisicing elit. Nam ducimus iusto quam
-                                veniam ab dolorem odit dolores quia, doloremque asperiores
-                                eaque reprehenderit tempora repellat saepe sint, cum
-                                cumque autem excepturi.</p>
+                        <td
+                            style="padding: 20px; font-family: Helvetica, Arial, sans-serif; font-size: 18px; font-weight: normal; line-height: 28px;">
+
+
+
+                            <h3 align="left" style="margin: 0 0 20px 0;">Here at Pyrosynthesis we have an endless love
+                                for everything fireworks and love to share our passion with others.</h3>
+                            <h2 style="margin: 50px 0 20px 0; font-size: 24px;">LEARN:</h2>
+                            <p align="left" style="margin: 0 0 20px 0;">Below, enjoy a Fireworks and Waterworks
+                                Chemistry
+                                lecture by Andrew Szydlo.</p>
+                            <iframe width="560" height="315"
+                                src="https://www.youtube-nocookie.com/embed/HRBVfqhPQQ8?start=6" frameborder="0"
+                                allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+                                allowfullscreen></iframe>
+                            <p style="margin: 50px 0 20px 0;">Here is also an article <em>Fireworks</em> by
+                                <strong>Kathy De Antonis</strong> in
+                                the
+                                October 2010 edition of <em>ChemMatters</em>. A magazine by the <span>American Chemical
+                                    Society.</span> </p>
+                        </td>
+
+                    </tr>
+                    <tr>
+                        <td
+                            style="padding: 20px; font-family: Helvetica, Arial, sans-serif; font-size: 18px; font-weight: normal; line-height: 28px;">
+                            <h2 style="margin: 50px 0 20px 0; font-size: 24px;">BUY:</h2>
+                        </td>
+                    </tr>
+                    <!-- TWO COLUMN SECTION -->
+                    <tr>
+                        <td align="center" valign="top" style="padding: 20px 10px 60px 10px;">
+                            <!-- TWO COLUMNS -->
+                            <table border="0" cellpadding="0" cellspacing="0" width="100%" role="presentation">
+                                <tr>
+                                    <td>
+                                        <!-- LEFT COLUMN -->
+                                        <table border="0" cellpadding="0" cellspacing="0" width="47%" align="left"
+                                            role="presentation">
+                                            <tr>
+                                                <td>
+                                                    <table border="0" cellpadding="0" cellspacing="0" width="100%"
+                                                        role="presentation">
+                                                        <tr>
+                                                            <td>
+                                                                <!-- 1ST INVENTORY ITEM -->
+                                                                <img src="https://drive.google.com/file/d/1KCJyYTFjNJm4Ek8paapwYw0JHHh8IGxx/view?usp=sharing
+                                                                " alt="Franklin Firework Assortment display">
+                                                            </td>
+                                                        </tr>
+                                                    </table>
+                                                </td>
+                                            </tr>
+                                        </table>
+                                        <!-- RIGHT COLUMN -->
+                                        <table border="0" cellpadding="0" cellspacing="0" width="47%" align="right"
+                                            role="presentation">
+                                            <tr>
+                                                <td>
+                                                    <table border="0" cellpadding="0" cellspacing="0" width="100%"
+                                                        role="presentation">
+                                                        <tr>
+                                                            <td style="padding: 10px;">
+                                                                <!-- CONTENT -->
+                                                                This great assortment is all you need for a backyard
+                                                                fireworks show. The set includes 10 multi-shot cakes, 8
+                                                                350-gram cakes, 12 500-gram cakes, and 72 artillery
+                                                                shells.
+                                                            </td>
+
+                                                        </tr>
+                                                        <tr>
+                                                            <td style="padding: 10px;">
+                                                                Contents: <br>
+                                                                MS366 Super Mafia Brothers <br>
+                                                                MX113B All Star Action <br>
+                                                                RL117 Brothers Artillery - 1.75" Ball <br>
+                                                                GM150 Pirates Cover <br>
+                                                                GM790 Cosmic Battle <br>
+                                                                GM383 76 Select Series <br>
+                                                            </td>
+                                                        </tr>
+                                                    </table>
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </td>
+                                </tr>
+                            </table>
+                            <!-- WHITESPACE -->
+                            <table style="padding: 10px;">
+                                <tr>
+                                    <td>
+                                        <!-- WHITESPACE TABLE INCASE PADDING FAILS -->
+                                    </td>
+                                </tr>
+                            </table>
+
+                            <!-- ADD NEW TWO COLUMN SECTION FOR EACH ITEM OF IVENTORY. KEEPS IT MODULAR. -->
+
+                        </td>
+                    </tr>
+
+
+                    <!-- 2ND INVENTORY SECTION -->
+                    <!-- TWO COLUMN SECTION -->
+                    <tr>
+                        <td align="center" valign="top" style="padding: 20px 10px 60px 10px;">
+                            <!-- TWO COLUMNS -->
+                            <table border="0" cellpadding="0" cellspacing="0" width="100%" role="presentation">
+                                <tr>
+                                    <td>
+                                        <!-- LEFT COLUMN -->
+                                        <table border="0" cellpadding="0" cellspacing="0" width="47%" align="left"
+                                            role="presentation">
+                                            <tr>
+                                                <td>
+                                                    <table border="0" cellpadding="0" cellspacing="0" width="100%"
+                                                        role="presentation">
+                                                        <tr>
+                                                            <td>
+                                                                <!-- 2ND INVENTORY ITEM -->
+                                                                <img src="https://drive.google.com/file/d/1v7zj47QI9MoaixpW9BFY1urvvczNEN2V/view?usp=sharing"
+                                                                    alt="Ultimate Pyro Power display">
+                                                            </td>
+                                                        </tr>
+                                                    </table>
+                                                </td>
+                                            </tr>
+                                        </table>
+                                        <!-- RIGHT COLUMN -->
+                                        <table border="0" cellpadding="0" cellspacing="0" width="47%" align="right"
+                                            role="presentation">
+                                            <tr>
+                                                <td>
+                                                    <table border="0" cellpadding="0" cellspacing="0" width="100%"
+                                                        role="presentation">
+                                                        <tr>
+                                                            <td style="padding: 10px;">
+                                                                <!-- CONTENT -->
+                                                                Ultimate Pyro Power contains all the fuse-lighting fun
+                                                                you need to fill the sky with fireworks. This set is
+                                                                jam-packed with over 22 multi-shot cakes and 42
+                                                                artillery shells!
+                                                            </td>
+
+                                                        </tr>
+                                                        <tr>
+                                                            <td style="padding: 10px;">
+                                                                Contents Include: <br>
+                                                                1pc Neon Light - 12 Shot <br>
+                                                                18 shells Firehawk Kit <br>
+                                                                8pcs Saturn Missile Battery - 25 Shot <br>
+                                                                6 shells Assorted Artillery Shells 1-3/4" <br>
+                                                                6 shells Whistling Artillery Shells 1-3/4" <br>
+                                                                (visit link to view full list) <br>
+                                                            </td>
+                                                        </tr>
+                                                    </table>
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </td>
+                                </tr>
+                            </table>
+                            <!-- WHITESPACE -->
+                            <table style="padding: 10px;">
+                                <tr>
+                                    <td>
+                                        <!-- WHITESPACE TABLE INCASE PADDING FAILS -->
+                                    </td>
+                                </tr>
+                            </table>
+
+                            <!-- ADD NEW TWO COLUMN SECTION FOR EACH ITEM OF IVENTORY. KEEPS IT MODULAR. -->
+
+                        </td>
+                    </tr>
+
+                    <!-- Weekly Spotlight -->
+
+                    <td
+                        style="padding: 20px; font-family: Helvetica, Arial, sans-serif; font-size: 18px; font-weight: normal; line-height: 28px;">
+                        <h2 style="margin: 50px 0 20px 0; font-size: 24px;">WEEKLY SPOTLIGHT:</h2>
+                    </td>
+
+                    <!-- This week is Nelson's Fireworks.  -->
+
+                    <tr>
+                        <td>
+                            <table table border="0" cellpadding="0" cellspacing="0" width="100%" role="presentation">
+                                <tr>
+                                    <td style="padding: 10px;">
+                                        <iframe
+                                            src="https://www.google.com/maps/embed?pb=!1m16!1m12!1m3!1d858264.8416141261!2d-97.4228738076271!3d32.82944040096629!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!2m1!1snelson&#39;s%20fireworks!5e0!3m2!1sen!2sus!4v1574805478571!5m2!1sen!2sus"
+                                            width="600" height="450" frameborder="0" style="border:0;"
+                                            allowfullscreen=""></iframe>
+                                    </td>
+                                </tr>
+                            </table>
                         </td>
                     </tr>
 
@@ -153,8 +355,7 @@
                                       font-size:13px;font-weight:bold;">BUTTON</center>
                                     </v:roundrect>
                                   <![endif]-->
-                                <a href="http://" style="background-color:#ec5918;border:
-                                1px solid #f9f5f1;border-radius:50px;color:#ebebeb;
+                                <a href="http://" style="background-color:#ec5918;border-style: none;color: #fdf2f2;border-radius:50px;color:#ebebeb;
                                 display:inline-block;font-family:sans-serif;font-size:13px;
                                 font-weight:bold;line-height:40px;text-align:center;
                                 text-decoration:none;width:115px;-webkit-text-size-adjust:none;
