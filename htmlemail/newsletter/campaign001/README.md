@@ -1,0 +1,1 @@
+Newsletter n.001  11/2019  Yount Labs LLC Dallas,TX
