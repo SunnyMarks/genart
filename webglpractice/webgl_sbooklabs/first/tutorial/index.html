@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WebGL Tutorial</title>
+    <style>
+        html,
+        body {
+            margin: 0px;
+            padding: 0px;
+            width: 100%;
+            height: 100%;
+        }
+
+        body {
+            background-color: #404040;
+        }
+
+        canvas {
+            border: 1px solid black;
+        }
+
+        div {
+            display: flex;
+            width: 100%;
+            height: 100%;
+            align-items: center;
+            justify-content: center;
+        }
+    </style>
+    <script src="gl.js"></script>
+    <script>
+        var gl;
+        window.addEventListener("load", function () {
+            //..................
+            //Get our extended GL Context Object
+            //This function uses a reference to the function `GLInstance` that was created in gl.js file 
+            //This is an example of chaining
+            //functions following the declaration of the function/object are methods that access the object gl. 
+            gl = GLInstance("glcanvas").fSetSize(500, 500).fClear();
+        });
+    </script>
+</head>
+
+<body>
+    <div>
+        <canvas id="glcanvas"></canvas>
+    </div>
+
+</body>
+
+</html>
