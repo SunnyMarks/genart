@@ -56,4 +56,18 @@ class ShaderUtil {
         return prog;
         //once this is written, link in html file
     }
+
+    //..................................................
+    // Helper functions
+    //..................................................
+
+    //Pass in Script Tag IDs for our two shaders and create a program from it. 
+    static domShaderProgram(gl, vectID, fragID, doValidate) {
+        let vShaderTxt = ShaderUtil.domShaderSrc(vectID); if (!vShaderTxt) return null;
+        let fShaderTxt = ShaderUtil.domShaderSrc(fragID); if (!fShaderTxt) return null;
+        let vShader = ShaderUtil.createShader(gl, vShaderTxt, gl.VERTEX_SHADER); if (!vShader) return null;
+        let fShader = ShaderUtil.createShader(gl, fShaderTxt, gl.FRAGMENT_SHADER); if (!fShader) return null;
+
+        return ShaderUtil.createProgram(gl, vShader, fShader, true);
+    }
 }
