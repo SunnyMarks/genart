@@ -14,3 +14,12 @@ in the vidoes (2017), flex is used. To my knowledge grid is being more adapted b
 
 Use the console (f12) on the browser to find any bugs. 
 
+
+Notes ShaderUtil:
+//create new JS file ex. Shaders.js
+//create a static utility functions (methods) inside ShaderUtil class. 
+//this means these methods will not be run when the class is instanced (called). They must be called directly. 
+//First method, get the shader code from text shader
+//Second method, compile shaders, this will be done twice. vertex and fragment
+//Third method, create the program that attaches the two shader together
+//After validation, set to true if prototyping, we delete the shaders after the program is compiled, only the program will return. 

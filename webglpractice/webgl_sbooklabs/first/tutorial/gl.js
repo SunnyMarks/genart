@@ -12,7 +12,6 @@ function GLInstance(canvasID) {
 
     //............................................
     //Methods
-    //Find out if this function can be rewritten using `new` **
     gl.fClear = function () { this.clear(this.COLOR_BUFFER_BIT | this.DEPTH_BUFFER_BITS); return this; }
 
     //.............................................
