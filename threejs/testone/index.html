@@ -1,44 +1,81 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>My first three.js app</title>
     <style>
-    body { margin: 0; }
-    canvas { width: 100%; height: 100% }
+        body {
+            margin: 0;
+        }
 
+        canvas {
+            width: 100%;
+            height: 100%
+        }
     </style>
 </head>
+
 <body>
     <script src="https://threejs.org/build/three.js"></script>
+    <script type="text/javascript" src="dat.gui.js"></script>
+
     <script>
         // Our JS will go here. 
 
         var scene = new THREE.Scene();
-        var camera = new THREE.PerspectiveCamera( 75, window.innerWidth/window.innerHeight, 0.1, 1000 );
+        var camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
 
         var renderer = new THREE.WebGLRenderer();
-        renderer.setSize( window.innerWidth, window.innerHeight);
-        document.body.appendChild( renderer.domElement );
-    
-        var geometry = new THREE.BoxGeometry(1,1,1);
-        var material = new THREE.MeshBasicMaterial( { color: 0x00ff00 } );
-        var cube = new THREE.Mesh ( geometry, material );
-        scene.add( cube );
+        renderer.setSize(window.innerWidth, window.innerHeight);
+        document.body.appendChild(renderer.domElement);
+
+        var geometry = new THREE.BoxGeometry(1, 1, 1, 10, 10, 10);
+        var material = new THREE.MeshBasicMaterial({ color: 0x00ff00 });
+        var cube = new THREE.Mesh(geometry, material);
+
+        var wireframe = new THREE.WireframeGeometry(cube);
+
+        var line = new THREE.LineSegments(wireframe);
+        line.material.depthTest = false;
+        line.material.opacity = 0.25;
+        line.material.transparent = false;
+
+        scene.add(line);
+        scene.add(cube);
 
         camera.position.z = 5;
+        //................................
+        //dat.gui 
+        // var FizzyText = function () {
+        //     this.message = 'dat.gui';
+        //     this.speed = 0.8;
+        //     this.displayOutline = false;
+        //     this.explode = function () { ... };
+        //     // Define render logic ...
+        // };
 
+        // window.onload = function () {
+        //     var text = new FizzyText();
+        //     var gui = new dat.GUI();
+        //     gui.add(text, 'message');
+        //     gui.add(text, 'speed', -5, 5);
+        //     gui.add(text, 'displayOutline');
+        //     gui.add(text, 'explode');
+        // };
+        //..........................................
         var animate = function () {
-            requestAnimationFrame( animate );
+            requestAnimationFrame(animate);
 
-            cube.rotation.x += 0.01;
-            cube.rotation.y += 0.02;
+            cube.rotation.x += 0.001;
+            cube.rotation.y += 0.001;
 
-            renderer.render( scene, camera );
+            renderer.render(scene, camera);
         }
         animate();
     </script>
 </body>
+
 </html>
