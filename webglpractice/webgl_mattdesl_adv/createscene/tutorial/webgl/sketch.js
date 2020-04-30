@@ -79,6 +79,13 @@ const sketch = ({ context }) => {
   //Create new Light Helper to see light position
   scene.add(new THREE.PointLightHelper(light, 0.15));  //target, size
 
+  //Create new Grid Helper to see orgin
+  scene.add(new THREE.GridHelper(5, 50));
+
+  //Create new Axis Heler to see the axis
+  var axesHelper = new THREE.AxesHelper(5);
+  scene.add(axesHelper);
+
   // draw each frame
   return {
     // Handle resize events here
