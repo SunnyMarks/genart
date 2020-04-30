@@ -36,6 +36,8 @@ const sketch = ({ context }) => {
   // Setup a geometry
   const geometry = new THREE.SphereGeometry(1, 32, 16);
 
+
+  //Create a Texture and load images
   const loader = new THREE.TextureLoader();
   const texture = loader.load("earth.jpg");
   const moonTexture = loader.load("moon.jpg");
@@ -49,8 +51,10 @@ const sketch = ({ context }) => {
 
   // Setup a mesh with geometry + material
   const mesh = new THREE.Mesh(geometry, material);
+  //Add mesh to scene
   scene.add(mesh);
 
+  //Create a new Group to make an anchor for rotation 
   const moonGroup = new THREE.Group();
   const moonMaterial = new THREE.MeshStandardMaterial({
     roughness: 1,
@@ -60,13 +64,20 @@ const sketch = ({ context }) => {
   const moonMesh = new THREE.Mesh(geometry, moonMaterial);
   moonMesh.position.set(1.5, 1, 0);
   moonMesh.scale.setScalar(0.25);
+
+  //Add mesh to group
   moonGroup.add(moonMesh);
 
+  //Add group to scene
   scene.add(moonGroup);
 
+  //Create a new light
   const light = new THREE.PointLight("white", 3);
-  light.position.set(2, 2, 2);
+  light.position.set(0, 2, 2);
   scene.add(light);
+
+  //Create new Light Helper to see light position
+  scene.add(new THREE.PointLightHelper(light, 0.15));  //target, size
 
   // draw each frame
   return {
