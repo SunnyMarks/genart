@@ -7,14 +7,6 @@ require("three/examples/js/controls/OrbitControls");
 const canvasSketch = require("canvas-sketch");
 
 const settings = {
-  // default dimensions are set to fullscreen
-  dimensions: [12, 12],
-  units: "in",
-  //scaleToView make development easier, but output is stated resolution.
-  scaleToView: true,
-  // orientation: "landscape",
-  // for print, recommended 300 ppi.
-  pixelsPerInch: 300,
   // Make the loop animated
   animate: true,
   // Get a WebGL canvas rather than 2D
@@ -28,11 +20,11 @@ const sketch = ({ context }) => {
   });
 
   // WebGL background color
-  renderer.setClearColor("yellow", 1);
+  renderer.setClearColor("black", 1);
 
   // Setup a camera
   const camera = new THREE.PerspectiveCamera(50, 1, 0.01, 100);
-  camera.position.set(0, 0, -4);
+  camera.position.set(3, 3, -5);
   camera.lookAt(new THREE.Vector3());
 
   // Setup camera controller
@@ -44,15 +36,48 @@ const sketch = ({ context }) => {
   // Setup a geometry
   const geometry = new THREE.SphereGeometry(1, 32, 16);
 
+
+  //Create a Texture and load images
+  const loader = new THREE.TextureLoader();
+  const texture = loader.load("earth.jpg");
+  const moonTexture = loader.load("moon.jpg");
+
   // Setup a material
-  const material = new THREE.MeshBasicMaterial({
-    color: "red",
-    wireframe: true
+  const material = new THREE.MeshStandardMaterial({
+    roughness: 1,
+    metalness: 0,
+    map: texture
   });
 
   // Setup a mesh with geometry + material
   const mesh = new THREE.Mesh(geometry, material);
+  //Add mesh to scene
   scene.add(mesh);
+
+  //Create a new Group to make an anchor for rotation 
+  const moonGroup = new THREE.Group();
+  const moonMaterial = new THREE.MeshStandardMaterial({
+    roughness: 1,
+    metalness: 0,
+    map: moonTexture
+  });
+  const moonMesh = new THREE.Mesh(geometry, moonMaterial);
+  moonMesh.position.set(1.5, 1, 0);
+  moonMesh.scale.setScalar(0.25);
+
+  //Add mesh to group
+  moonGroup.add(moonMesh);
+
+  //Add group to scene
+  scene.add(moonGroup);
+
+  //Create a new light
+  const light = new THREE.PointLight("white", 3);
+  light.position.set(0, 2, 2);
+  scene.add(light);
+
+  //Create new Light Helper to see light position
+  scene.add(new THREE.PointLightHelper(light, 0.15));  //target, size
 
   // draw each frame
   return {
@@ -65,6 +90,9 @@ const sketch = ({ context }) => {
     },
     // Update & render your scene here
     render({ time }) {
+      mesh.rotation.y = time * 0.15;
+      moonMesh.rotation.y = time * .085;
+      moonGroup.rotation.y = time * 0.5;
       controls.update();
       renderer.render(scene, camera);
     },
