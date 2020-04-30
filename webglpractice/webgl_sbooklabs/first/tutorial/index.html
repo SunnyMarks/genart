@@ -33,7 +33,11 @@
     <script src="gl.js"></script>
     <script src="Shaders.js"></script>
     <script>
-        var gl;
+        var gl,                     //Global Reference to our extended GL context
+            gVertCnt = 0,               //TODO: Temporarly storing Vertice Count globally until we have our mesh function in later lessons.
+            uPointSizeLoc = -1,         //TODO : Temp storying globally until we have a VAO object setup
+            uAngle = 0,
+            gRLoop;                     //Global Ref to our Render Loop
         window.addEventListener("load", function () {
             //..................
             //Get our extended GL Context Object
@@ -46,13 +50,14 @@
             //.............................
             //SHADER STEPS  
             // 1. Get Vertex and Fragment Shader Text (GLSL)
-            var vShaderTxt = ShaderUtil.domShaderSrc("vertex_shader"),
-                fShaderTxt = ShaderUtil.domShaderSrc("fragment_shader"),
-                // 2. Compile text and validate
-                vShader = ShaderUtil.createShader(gl, vShaderTxt, gl.VERTEX_SHADER),
-                fShader = ShaderUtil.createShader(gl, fShaderTxt, gl.FRAGMENT_SHADER),
-                // 3. Link the shaders together as a program. 
-                shaderProg = ShaderUtil.createProgram(gl, vShader, fShader, true);
+            // var vShaderTxt = ShaderUtil.domShaderSrc("vertex_shader"),
+            //     fShaderTxt = ShaderUtil.domShaderSrc("fragment_shader"),
+            //     // 2. Compile text and validate
+            //     vShader = ShaderUtil.createShader(gl, vShaderTxt, gl.VERTEX_SHADER),
+            //     fShader = ShaderUtil.createShader(gl, fShaderTxt, gl.FRAGMENT_SHADER),
+            //     // 3. Link the shaders together as a program. 
+            //     shaderProg = ShaderUtil.createProgram(gl, vShader, fShader, true);
+            shaderProg = ShaderUtil.domShaderProgram(gl, "vertex_shader", "fragment_shader", true);
             // 4. Get Location of Uniforms and Attributes.
             gl.useProgram(shaderProg);
             var aPositionLoc = gl.getAttribLocation(shaderProg, "a_position"),
