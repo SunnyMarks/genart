@@ -37,10 +37,23 @@ const sketch = ({ context }) => {
   const geometry = new THREE.SphereGeometry(1, 32, 16);
 
 
+  const torus = new THREE.TorusGeometry(0.5, 0.1, 32, 64); //outer radius size, inner radius(donut thickness), segments
+
+
   //Create a Texture and load images
   const loader = new THREE.TextureLoader();
   const texture = loader.load("earth.jpg");
   const moonTexture = loader.load("moon.jpg");
+
+  //Create a Texture for a torus geometry;
+  //load in diffuse (color) map(image)
+  const torusTexture = loader.load("brick-diffuse.jpg");
+  //fix stretching
+  //along the horizontal and vertical make sure it wraps seemlessly *
+  torusTexture.wrapS = torusTexture.wrapT = THREE.RepeatWrapping;
+  //repeat the texture to reduce stretching further along the two axis.
+  torusTexture.repeat.set(2, 1).multiplyScalar(2); //scales the repeat vector(2,1)
+
 
   // Setup a material
   const material = new THREE.MeshStandardMaterial({
@@ -65,11 +78,25 @@ const sketch = ({ context }) => {
   moonMesh.position.set(1.5, 1, 0);
   moonMesh.scale.setScalar(0.25);
 
+  //Create a torus material & mesh, and add it to moonGroup
+  const torusMaterial = new THREE.MeshStandardMaterial({
+    roughness: 1,
+    metalness: 0,
+    map: torusTexture
+  });
+
+  const torusMesh = new THREE.Mesh(torus, torusMaterial);
+  torusMesh.position.set(1.5, 1, 0);
+
+  scene.add(torusMesh);
+
+
   //Add mesh to group
   moonGroup.add(moonMesh);
 
   //Add group to scene
   scene.add(moonGroup);
+
 
   //Create a new light
   const light = new THREE.PointLight("white", 3);
