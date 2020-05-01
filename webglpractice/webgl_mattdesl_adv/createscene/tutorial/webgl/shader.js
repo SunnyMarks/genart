@@ -64,7 +64,7 @@ const sketch = ({ context }) => {
   varying vec2 vUv;
   uniform vec3 color;
   void main() {
-    gl_FragColor = vec4(vec3(vUv.x) * color, 1.0);
+    gl_FragColor = vec4(vec3(vUv.x, vUv.y, vUv.x) * color, 1.0);
   }
   `;
 
@@ -72,7 +72,7 @@ const sketch = ({ context }) => {
   const material = new THREE.ShaderMaterial({
     //we use uniforms to pass in Data to Shaders.
     uniforms: {
-      color: { value: new THREE.Color("red") }
+      color: { value: new THREE.Color("#fff") }
     },
     vertexShader,
     fragmentShader
