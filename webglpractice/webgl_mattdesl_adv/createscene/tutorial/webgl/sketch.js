@@ -37,7 +37,7 @@ const sketch = ({ context }) => {
   const geometry = new THREE.SphereGeometry(1, 32, 16);
 
 
-  const torus = new THREE.TorusGeometry(1, 0.5, 32, 64); //outer radius size, inner radius(donut thickness), segments
+  const torus = new THREE.TorusGeometry(0.5, 0.1, 32, 64); //outer radius size, inner radius(donut thickness), segments
 
 
   //Create a Texture and load images
@@ -86,16 +86,17 @@ const sketch = ({ context }) => {
   });
 
   const torusMesh = new THREE.Mesh(torus, torusMaterial);
-  torusMesh.position.set(2.5, 1, 0);
-  torusMesh.scale.set(0.50);
+  torusMesh.position.set(1.5, 1, 0);
+
+  scene.add(torusMesh);
 
 
   //Add mesh to group
   moonGroup.add(moonMesh);
-  moonGroup.add(torusMesh);
 
   //Add group to scene
   scene.add(moonGroup);
+
 
   //Create a new light
   const light = new THREE.PointLight("white", 3);
