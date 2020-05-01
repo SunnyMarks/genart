@@ -32,6 +32,15 @@ const sketch = ({ context }) => {
 
   // Setup your scene
   const scene = new THREE.Scene();
+  // Change scene background
+  scene.background = new THREE.Color(0xe0e0e0);
+  //add fog to scene
+  scene.fog = new THREE.Fog(0xe0e0e0, 20, 100);
+  //add gridhelper
+  const grid = new THREE.GridHelper(200, 40, 0x000000, 0x000000);
+  grid.material.opacity = 0.2;
+  grid.material.transparent = true;
+  scene.add(grid);
 
   // Setup a geometry
   const geometry = new THREE.BoxGeometry(1, 1, 1);
