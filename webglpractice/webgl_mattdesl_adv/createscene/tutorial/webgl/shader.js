@@ -32,6 +32,15 @@ const sketch = ({ context }) => {
 
   // Setup your scene
   const scene = new THREE.Scene();
+  // Change scene background
+  scene.background = new THREE.Color(0xe0e0e0);
+  //add fog to scene
+  scene.fog = new THREE.Fog(0xe0e0e0, 20, 100);
+  //add gridhelper
+  const grid = new THREE.GridHelper(200, 40, 0x000000, 0x000000);
+  grid.material.opacity = 0.2;
+  grid.material.transparent = true;
+  scene.add(grid);
 
   // Setup a geometry
   const geometry = new THREE.BoxGeometry(1, 1, 1);
@@ -40,7 +49,10 @@ const sketch = ({ context }) => {
   //give sytax highlighting 
   //create vertexShader (verts)
   const vertexShader = /* glsl */`
+  //varying type has to match exactly in vertex and fragment shaders
+  varying vec2 vUv;
   void main () {
+    vUv = uv;
     gl_Position = projectionMatrix * modelViewMatrix * vec4(position.xyz, 1.0);
   }
   `;
@@ -48,8 +60,9 @@ const sketch = ({ context }) => {
 
   //create fragmentShader (pixels)
   const fragmentShader = /* glsl */`
+  varying vec2 vUv;
   void main() {
-    gl_FragColor = vec4(vec3(1.0,0.0,0.0), 1.0);
+    gl_FragColor = vec4(vec3(vUv.x), 1.0);
   }
   `;
 
