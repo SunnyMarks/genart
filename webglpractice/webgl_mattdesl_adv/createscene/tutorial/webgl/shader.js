@@ -40,7 +40,10 @@ const sketch = ({ context }) => {
   //give sytax highlighting 
   //create vertexShader (verts)
   const vertexShader = /* glsl */`
+  //varying type has to match exactly in vertex and fragment shaders
+  varying vec2 vUv;
   void main () {
+    vUv = uv;
     gl_Position = projectionMatrix * modelViewMatrix * vec4(position.xyz, 1.0);
   }
   `;
@@ -48,8 +51,9 @@ const sketch = ({ context }) => {
 
   //create fragmentShader (pixels)
   const fragmentShader = /* glsl */`
+  varying vec2 vUv;
   void main() {
-    gl_FragColor = vec4(vec3(1.0,0.0,0.0), 1.0);
+    gl_FragColor = vec4(vec3(vUv.x), 1.0);
   }
   `;
 
