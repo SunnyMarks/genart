@@ -38,14 +38,25 @@ const sketch = ({ context }) => {
 
   //install "comment tagged templates" and "shader languages support"
   //give sytax highlighting 
-  const fragmentShader = /* glsl */`
+  //create vertexShader (verts)
+  const vertexShader = /* glsl */`
   void main () {
-    
+    gl_Position = projectionMatrix * modelViewMatrix * vec4(position.xyz, 1.0);
+  }
+  `;
+
+
+  //create fragmentShader (pixels)
+  const fragmentShader = /* glsl */`
+  void main() {
+    gl_FragColor = vec4(vec3(1.0,0.0,0.0), 1.0);
   }
   `;
 
   // Setup a material
   const material = new THREE.ShaderMaterial({
+    vertexShader,
+    fragmentShader
   });
 
   // Setup a mesh with geometry + material
