@@ -41,7 +41,7 @@
         var loader = new THREE.GLTFLoader();
 
         //Load a glTF resource
-        //gltf is returning 'undefined'
+
         loader.load('soccerballanim.glb', function (gltf) {
             scene.add(gltf.scene);
 
@@ -56,6 +56,7 @@
             },
             function (error) {
                 console.log('An error happened');
+                //'An error happened' is being returned. Cross-Origin Request Blocked. Http no supported. 
             }
         );
 
