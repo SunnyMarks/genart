@@ -22,6 +22,7 @@
     <script src="https://threejs.org/build/three.js"></script>
     <script type="text/javascript" src="dat.gui.js"></script>
     <script src="OrbitControls.js"></script>
+    <script src="GLTFLoader.js"></script>
 
     <script>
         // Our JS will go here. 
@@ -35,6 +36,28 @@
         var renderer = new THREE.WebGLRenderer();
         renderer.setSize(window.innerWidth, window.innerHeight);
         document.body.appendChild(renderer.domElement);
+
+        //Create loader
+        var loader = new THREE.GLTFLoader();
+
+        //Load a glTF resource
+        //gltf is returning 'undefined'
+        loader.load('soccerballanim.glb', function (gltf) {
+            scene.add(gltf.scene);
+
+            gltf.scene;
+            gltf.scenes;
+            gltf.cameras;
+            gltf.asset;
+
+        },
+            function (xhr) {
+                console.log((xhr.loaded / xhr.total * 100) + '% loaded');
+            },
+            function (error) {
+                console.log('An error happened');
+            }
+        );
 
         var geometry = new THREE.BoxGeometry(1, 1, 1, 10, 10, 10);
         var material = new THREE.MeshStandardMaterial({
