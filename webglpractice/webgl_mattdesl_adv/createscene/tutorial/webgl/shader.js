@@ -63,8 +63,9 @@ const sketch = ({ context }) => {
   const fragmentShader = /* glsl */`
   varying vec2 vUv;
   uniform vec3 color;
+  uniform float time;
   void main() {
-    gl_FragColor = vec4(vec3(vUv.x) * color, 1.0);
+    gl_FragColor = vec4(vec3(vUv.x + sin(time), vUv.y, vUv.x) * color, 1.0);
   }
   `;
 
@@ -72,7 +73,9 @@ const sketch = ({ context }) => {
   const material = new THREE.ShaderMaterial({
     //we use uniforms to pass in Data to Shaders.
     uniforms: {
-      color: { value: new THREE.Color("red") }
+      //introduce animation using a uniform called `time` into the shader
+      time: { value: 0 },
+      color: { value: new THREE.Color("#fff") }
     },
     vertexShader,
     fragmentShader
@@ -93,6 +96,7 @@ const sketch = ({ context }) => {
     },
     // Update & render your scene here
     render({ time }) {
+      material.uniforms.time.value = time;
       controls.update();
       renderer.render(scene, camera);
     },
