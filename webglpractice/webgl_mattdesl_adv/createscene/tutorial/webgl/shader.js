@@ -72,13 +72,14 @@ const sketch = ({ context }) => {
     vec2 center = vec2(0.5, 0.5);
     vec2 q = vUv;
     q.x *= 2.0;
-    vec2 pos = mod(q * 5.0, 1.0);
+    vec2 pos = mod(q * 10.0, 1.0);
 
     float d = distance(pos, center);
 
     // float mask = step(0.25 + sin(time + vUv.x * 2.0) * 0.25, d);
 
-    float offset = noise(vec3(vUv.xy, time));
+    vec2 noiseInput = floor(q * 10.0);
+    float offset = noise(vec3(noiseInput.xy, time)) * 0.25;
     float mask = step(0.25 + offset, d);
 
     mask = 1.0 - mask;
