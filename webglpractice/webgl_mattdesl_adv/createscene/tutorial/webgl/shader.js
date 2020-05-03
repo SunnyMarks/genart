@@ -68,7 +68,9 @@ const sketch = ({ context }) => {
     vec2 center = vec2(0.5, 0.5);
     float d = distance(vUv, center);
 
-    gl_FragColor = vec4(vec3(d), 1.0);
+    float mask = d > 0.25 ? 1.0 : 0.0;
+
+    gl_FragColor = vec4(vec3(mask), 1.0);
   }
   `;
 
