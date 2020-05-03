@@ -70,6 +70,9 @@ const sketch = ({ context }) => {
 
     float mask = d > 0.25 ? 1.0 : 0.0;
 
+    
+    mask = 1.0 - mask;
+
     gl_FragColor = vec4(vec3(mask), 1.0);
   }
   `;
