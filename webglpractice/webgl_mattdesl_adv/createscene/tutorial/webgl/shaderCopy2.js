@@ -46,9 +46,6 @@ const sketch = ({ context }) => {
   // Setup a geometry
   const geometry = new THREE.SphereGeometry(1, 32, 16);
 
-  const baseGeom = new THREE.IcosahedronGeometry(1, 0);
-  const points = baseGeom.vertices;
-  console.log(points);
   //install "comment tagged templates" and "shader languages support"
   //give sytax highlighting 
   //create vertexShader (verts)
@@ -72,7 +69,24 @@ const sketch = ({ context }) => {
   uniform vec3 color;
   uniform float time;
   void main() {
-    gl_FragColor = vec4(vec3(color), 1.0);
+    vec2 center = vec2(0.5, 0.5);
+    vec2 q = vUv;
+    q.x *= 2.0;
+    vec2 pos = mod(q * 10.0, 1.0);
+
+    float d = distance(pos, center);
+
+    // float mask = step(0.25 + sin(time + vUv.x * 2.0) * 0.25, d);
+
+    vec2 noiseInput = floor(q * 10.0);
+    float offset = noise(vec3(noiseInput.xy, time)) * 0.25;
+    float mask = step(0.25 + offset, d);
+
+    mask = 1.0 - mask;
+    
+    vec3 fragColor = mix(color, vec3(1.0), mask);
+
+    gl_FragColor = vec4(vec3(fragColor), 1.0);
 
 
 
