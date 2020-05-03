@@ -68,12 +68,10 @@ const sketch = ({ context }) => {
     vec2 center = vec2(0.5, 0.5);
 
     vec2 pos = mod(vUv * 5.0, 1.0);
+
     float d = distance(pos, center);
 
-    
-    
-
-    float mask = d > 0.25 ? 1.0 : 0.0;
+    float mask = step(0.25 + vUv.x * 0.25, d);
 
 
     mask = 1.0 - mask;
