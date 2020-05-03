@@ -43,7 +43,7 @@ const sketch = ({ context }) => {
   scene.add(grid);
 
   // Setup a geometry
-  const geometry = new THREE.SphereGeometry(1, 32, 16);
+  const geometry = new THREE.BoxGeometry(1, 1, 1);
 
   //install "comment tagged templates" and "shader languages support"
   //give sytax highlighting 
@@ -65,23 +65,7 @@ const sketch = ({ context }) => {
   uniform vec3 color;
   uniform float time;
   void main() {
-    vec2 center = vec2(0.5, 0.5);
-    vec2 q = vUv;
-    q.x *= 2.0;
-    vec2 pos = mod(q * 5.0, 1.0);
-
-    float d = distance(pos, center);
-
-    float mask = step(0.25 + sin(time + vUv.x * 2.0) * 0.25, d);
-
-    mask = 1.0 - mask;
-    
-    vec3 fragColor = mix(color, vec3(1.0), mask);
-
-    gl_FragColor = vec4(vec3(fragColor), 1.0);
-
-
-
+    gl_FragColor = vec4(vec3(vUv.x + sin(time), vUv.y, vUv.x) * color, 1.0);
   }
   `;
 
@@ -91,7 +75,7 @@ const sketch = ({ context }) => {
     uniforms: {
       //introduce animation using a uniform called `time` into the shader
       time: { value: 0 },
-      color: { value: new THREE.Color("tomato") }
+      color: { value: new THREE.Color("#fff") }
     },
     vertexShader,
     fragmentShader
