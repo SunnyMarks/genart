@@ -5,6 +5,7 @@ global.THREE = require("three");
 require("three/examples/js/controls/OrbitControls");
 
 const canvasSketch = require("canvas-sketch");
+const glsl = require("glslify");
 
 const settings = {
   // Make the loop animated
@@ -60,7 +61,10 @@ const sketch = ({ context }) => {
 
   //create fragmentShader (pixels)
   //`uniform vec3 color` passes in the data we created in `material` below
-  const fragmentShader = /* glsl */`
+  const fragmentShader = glsl(/* glsl */`
+  #pragma glslify: noise = require('glsl-noise/simplex/3d');
+
+
   varying vec2 vUv;
   uniform vec3 color;
   uniform float time;
@@ -68,11 +72,15 @@ const sketch = ({ context }) => {
     vec2 center = vec2(0.5, 0.5);
     vec2 q = vUv;
     q.x *= 2.0;
-    vec2 pos = mod(q * 5.0, 1.0);
+    vec2 pos = mod(q * 10.0, 1.0);
 
     float d = distance(pos, center);
 
-    float mask = step(0.25 + sin(time + vUv.x * 2.0) * 0.25, d);
+    // float mask = step(0.25 + sin(time + vUv.x * 2.0) * 0.25, d);
+
+    vec2 noiseInput = floor(q * 10.0);
+    float offset = noise(vec3(noiseInput.xy, time)) * 0.25;
+    float mask = step(0.25 + offset, d);
 
     mask = 1.0 - mask;
     
@@ -83,7 +91,7 @@ const sketch = ({ context }) => {
 
 
   }
-  `;
+  `);
 
   // Setup a material
   const material = new THREE.ShaderMaterial({
