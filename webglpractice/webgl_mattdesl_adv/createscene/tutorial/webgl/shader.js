@@ -71,12 +71,16 @@ const sketch = ({ context }) => {
 
     float d = distance(pos, center);
 
-    float mask = step(0.25 + vUv.x * 0.25, d);
-
+    float mask = step(0.25 + sin(time + vUv.x * 2.0) * 0.25, d);
 
     mask = 1.0 - mask;
+    
+    vec3 fragColor = mix(color, vec3(1.0), mask);
 
-    gl_FragColor = vec4(vec3(mask), 1.0);
+    gl_FragColor = vec4(vec3(fragColor), 1.0);
+
+
+
   }
   `;
 
@@ -86,7 +90,7 @@ const sketch = ({ context }) => {
     uniforms: {
       //introduce animation using a uniform called `time` into the shader
       time: { value: 0 },
-      color: { value: new THREE.Color("#fff") }
+      color: { value: new THREE.Color("tomato") }
     },
     vertexShader,
     fragmentShader
