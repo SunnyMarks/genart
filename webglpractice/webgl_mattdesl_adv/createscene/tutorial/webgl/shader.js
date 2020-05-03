@@ -66,11 +66,16 @@ const sketch = ({ context }) => {
   uniform float time;
   void main() {
     vec2 center = vec2(0.5, 0.5);
-    float d = distance(vUv, center);
+
+    vec2 pos = mod(vUv * 5.0, 1.0);
+    float d = distance(pos, center);
+
+    
+    
 
     float mask = d > 0.25 ? 1.0 : 0.0;
 
-    
+
     mask = 1.0 - mask;
 
     gl_FragColor = vec4(vec3(mask), 1.0);
