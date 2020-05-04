@@ -49,19 +49,6 @@ const sketch = ({ context }) => {
   const baseGeom = new THREE.IcosahedronGeometry(1, 1);
   const points = baseGeom.vertices;
 
-  const circleGeom = new THREE.CircleGeometry(1, 32);
-
-  points.forEach(point => {
-    const mesh = new THREE.Mesh(circleGeom, new THREE.MeshBasicMaterial({
-      color: "black",
-      side: THREE.BackSide
-    })
-    );
-    mesh.position.copy(point);
-    mesh.scale.setScalar(0.15);
-    mesh.lookAt(new THREE.Vector3());
-    scene.add(mesh);
-  })
 
 
   //install "comment tagged templates" and "shader languages support"
@@ -70,7 +57,9 @@ const sketch = ({ context }) => {
   const vertexShader = /* glsl */`
   //varying type has to match exactly in vertex and fragment shaders
   varying vec2 vUv;
+  varying vec3 vPosition;
   void main () {
+    vPosition = position;
     vUv = uv;
     gl_Position = projectionMatrix * modelViewMatrix * vec4(position.xyz, 1.0);
   }
@@ -84,20 +73,37 @@ const sketch = ({ context }) => {
 
 
   varying vec2 vUv;
+  varying vec3 vPosition;
   uniform vec3 color;
   uniform float time;
+
+  uniform vec3 points[POINT_COUNT];
+
   void main() {
-    gl_FragColor = vec4(vec3(color), 1.0);
+    float dist = 10000.0;
+    
+    
+    for (int i = 0; i < POINT_COUNT; i++) {
+      vec3 p = points[i];
+      float d =distance(vPosition, p);
+      dist = min(d, dist);
+    }
 
+    
 
+    gl_FragColor = vec4(vec3(dist), 1.0);
 
   }
   `);
 
   // Setup a material
   const material = new THREE.ShaderMaterial({
+    defines: {
+      POINT_COUNT: points.length
+    },
     //we use uniforms to pass in Data to Shaders.
     uniforms: {
+      points: { value: points },
       //introduce animation using a uniform called `time` into the shader
       time: { value: 0 },
       color: { value: new THREE.Color("tomato") }
