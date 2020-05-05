@@ -90,8 +90,11 @@ const sketch = ({ context }) => {
     }
 
     float mask = step(0.2, dist);
+    mask = 1.0 - mask;
 
-    gl_FragColor = vec4(vec3(mask), 1.0);
+    vec3 fragColor = mix(color, vec3(1.0), mask);
+
+    gl_FragColor = vec4(vec3(fragColor), 1.0);
 
   }
   `);
