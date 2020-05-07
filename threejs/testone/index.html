@@ -66,19 +66,23 @@
 
         //Create geometry
         var geometry = new THREE.BoxGeometry(1, 1, 1, 10, 10, 10);
-        var spheregeometry = new THREE.SphereGeometry(1, 32, 16);
+        var spheregeo = new THREE.SphereGeometry(1, 32, 16);
 
         //Create materials
         var material = new THREE.MeshNormalMaterial({
-            color: 0x00ff00,
-            roughness: 1
+
         });
+
+        var spheremat = new THREE.MeshNormalMaterial();
 
         //Create Mesh
         var cube = new THREE.Mesh(geometry, material);
 
         var cube2 = new THREE.Mesh(geometry, material);
         cube2.position.z = 5;
+
+        var sphere = new THREE.Mesh(spheregeo, spheremat);
+        sphere.position.x = 2;
 
 
         // Change scene background
@@ -90,9 +94,11 @@
         grid.material.opacity = 0.2;
         grid.material.transparent = true;
 
+        //Add/Render to scene
         scene.add(grid);
         scene.add(cube);
         scene.add(cube2);
+        scene.add(sphere);
 
         //Create a new light
         const light = new THREE.PointLight("white", 3);
