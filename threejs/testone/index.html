@@ -60,12 +60,26 @@
             }
         );
 
+        //Create needed groups
+        var group = new THREE.Group();
+
+
+        //Create geometry
         var geometry = new THREE.BoxGeometry(1, 1, 1, 10, 10, 10);
-        var material = new THREE.MeshStandardMaterial({
+        var spheregeometry = new THREE.SphereGeometry(1, 32, 16);
+
+        //Create materials
+        var material = new THREE.MeshNormalMaterial({
             color: 0x00ff00,
             roughness: 1
         });
+
+        //Create Mesh
         var cube = new THREE.Mesh(geometry, material);
+
+        var cube2 = new THREE.Mesh(geometry, material);
+        cube2.position.z = 5;
+
 
         // Change scene background
         scene.background = new THREE.Color(0xe0e0e0);
@@ -78,6 +92,7 @@
 
         scene.add(grid);
         scene.add(cube);
+        scene.add(cube2);
 
         //Create a new light
         const light = new THREE.PointLight("white", 3);
