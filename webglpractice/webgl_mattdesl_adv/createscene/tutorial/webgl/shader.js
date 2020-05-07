@@ -143,6 +143,7 @@ const sketch = ({ context }) => {
     sball = gltf.scene.children[0];
     scene.add(sball);
     sball.position.z = -5;
+    scene.add(gltf.scene);
 
     gltf.scene;
     gltf.scenes;
