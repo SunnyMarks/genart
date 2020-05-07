@@ -3,6 +3,7 @@ global.THREE = require("three");
 
 // Include any additional ThreeJS examples below
 require("three/examples/js/controls/OrbitControls");
+require("three/examples/js/loaders/GLTFLoader");
 
 const canvasSketch = require("canvas-sketch");
 const glsl = require("glslify");
@@ -99,7 +100,7 @@ const sketch = ({ context }) => {
   }
   `);
 
-  // Setup a material
+  // Setup a material after defining fshader and vshader.
   const material = new THREE.ShaderMaterial({
     defines: {
       POINT_COUNT: points.length
@@ -118,6 +119,37 @@ const sketch = ({ context }) => {
   // Setup a mesh with geometry + material
   const mesh = new THREE.Mesh(geometry, material);
   scene.add(mesh);
+
+  //Create loader
+  var loader = new THREE.GLTFLoader();
+
+  //Load a glTF resource
+
+  loader.load('soccerballanim.glb', handle_load,
+    function (xhr) {
+      console.log((xhr.loaded / xhr.total * 100) + '% loaded');
+    },
+    function (error) {
+      console.log('An error happened');
+      //'An error happened' is being returned. Cross-Origin Request Blocked. Http no supported. 
+    }
+  );
+
+  //*An error happened* is being logged. ??? Problems-0????
+  var sball;
+
+  function handle_load(gltf) {
+
+    sball = gltf.scene.children[0];
+    scene.add(sball);
+    sball.position.z = -5;
+
+    gltf.scene;
+    gltf.scenes;
+    gltf.cameras;
+    gltf.asset;
+
+  };
 
   // draw each frame
   return {
