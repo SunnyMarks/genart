@@ -22,7 +22,7 @@ var fragmentShaderText = [
   "}"
 ].join("\n");
 
-var InitDemo = function() {
+var InitDemo = function () {
   var canvas = document.getElementById("game-surface");
   var gl = canvas.getContext("webgl");
 
